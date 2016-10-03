@@ -1,0 +1,21 @@
+%flexify {
+    display: flex;
+    flex-direction: column;
+}
+
+$online-color: rgb(0, 168, 55);
+$offline-color: rgb(241, 73, 73);
+$li-background-color: rgb(222, 222, 222);
+$li-background-color-on-hover: darken($li-background-color, 5%);
+$search-input-background-color: rgb(171, 171, 171);
+$search-input-background-color-on-focus: lighten($search-input-background-color, 10%);
+$border-radius: .3em;
+$status-color: darken($li-background-color-on-hover, 60%);
+$larg-width-screens: 1000px;
+$medium-width-screens: 850px;
+$small-width-screens: 650px;
+$larg-width: 80%;
+$medium-width: 90%;
+$small-width: 98%;
+$link-color: rgb(51, 138, 187);
+$link-color-hover: rgb(232, 90, 143);
