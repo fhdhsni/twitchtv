@@ -52,22 +52,25 @@ img {
             margin-left: 1em;
             width: 10%;
         }
-
-        .status {
-            margin: auto;
-            text-align: center;
-            width: 45ch;
-
-            @media (max-width: $medium-width-screens) {
-                display: none;
-            }
-        }
-
-        .online,
-        .offline {
-            margin-left: auto;
-        }
     }
+}
+
+.status {
+    flex: 0 1 auto;             // ie
+    margin: auto;
+    text-align: center;
+    width: 45ch;
+    float: right;               // f%$cking ie
+
+    @media (max-width: $medium-width-screens) {
+        display: none;
+    }
+}
+
+.online,
+.offline {
+    float: right;               // ie
+    margin-left: auto;
 }
 
 .existence {
