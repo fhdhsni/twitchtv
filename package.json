@@ -28,7 +28,9 @@
     "build:css": "node-sass src/scss/style.scss --source-map-contents --source-map-embed --output-style expanded | postcss -u autoprefixer -o src/css/style.css",
     "build:js": "browserify -d src/js/*.js -o src/js/bundle.js -t [ babelify --presets [ es2015 ] ]",
     "build": "npm run rebuild; run-s checkNode eslint test build:*",
-    "postbuild": "echo '\nBuild OK\n'"
+    "postbuild": "echo '\nBuild OK\n'",
+    "shipit": "mkdir -p dist/js && mkdir -p dist/css && uglifyjs src/js/bundle.js -o dist/js/scripts.js && node-sass src/scss/style.scss --output-style compressed | postcss -u autoprefixer -o dist/css/styles.css",
+    "postshipit": "echo '\nshipit task successfully completed\n'"
   },
   "author": "Farhad hsni <farhad.hsni@gmail.com>",
   "license": "MIT",
@@ -58,7 +60,8 @@
     "onchange": "^2.5.0",
     "postcss-cli": "^2.5.2",
     "semver": "^5.2.0",
-    "sinon": "^1.17.6"
+    "sinon": "^1.17.6",
+    "uglifyjs": "^2.4.10"
   },
   "dependencies": {
     "normalize.css": "^4.2.0"

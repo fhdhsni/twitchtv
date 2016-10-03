@@ -6,9 +6,9 @@ module.exports = function requester(users, cb) {
     xhr.setRequestHeader("Client-ID", "ghabxme08rzbv3esgcoqfsbwuo8yj89");
     xhr.addEventListener("load", () => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        cb(null, xhr.responseText, user);
+        cb.addToPage(null, xhr.responseText, user);
       } else {
-        cb(xhr.responseText);
+        cb.addToPage(xhr.responseText);
       }
     });
     xhr.send();

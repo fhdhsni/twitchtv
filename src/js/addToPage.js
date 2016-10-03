@@ -1,39 +1,40 @@
-const addOnlineUser = require("./addOnlineUser.js");
-const addOfflineUser = require("./addOfflineUser.js");
-const addUserDoesntExist = require("./userDoesntExist.js");
+exports.addOnlineUser = require("./addOnlineUser.js");
+exports.addOfflineUser = require("./addOfflineUser.js");
+exports.addUserDoesntExist = require("./userDoesntExist.js");
 
-function findURL(data) {
+exports.findURL = function findURL(data) {
   return data.stream.channel.url;
-}
+};
 
-function findLogo(data) {
+exports.findLogo = function findLogo(data) {
   return data.stream.channel.logo;
-}
+};
 
-function findStatus(data) {
+exports.findStatus = function findStatus(data) {
   return data.stream.channel.status;
-}
+};
 
-function findName(data) {
+exports.findName = function findName(data) {
   return data.stream.channel.display_name;
-}
+};
 
-module.exports = function (error, data, user) { // data is string not JSON
+exports.addToPage = function addToPage(error, data, user) {
+  // data is string not JSON
   if (error) {
-    addUserDoesntExist(JSON.parse(error));
+    this.addUserDoesntExist(JSON.parse(error));
   } else {
     const parsedData = JSON.parse(data);
     const info = {};
 
     if (parsedData.stream) {
-      info.url = findURL(parsedData);
-      info.logo = findLogo(parsedData);
-      info.status = findStatus(parsedData);
-      info.name = findName(parsedData);
+      info.url = this.findURL(parsedData);
+      info.logo = this.findLogo(parsedData);
+      info.status = this.findStatus(parsedData);
+      info.name = this.findName(parsedData);
 
-      addOnlineUser(info);
+      this.addOnlineUser(info);
     } else {
-      addOfflineUser(user);
+      this.addOfflineUser(user);
     }
   }
 };
